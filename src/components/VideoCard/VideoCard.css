@@ -1,0 +1,35 @@
+.video-card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.video-card-container {
+  width: 24vw;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.video-img-container {
+  width: 24vw;
+}
+.thumbnail-img {
+  width: 100%;
+}
+
+.video-content-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.video-card-content {
+  font-size: 1.8rem;
+}
+
+.video-like-icon,
+.video-play-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+}
