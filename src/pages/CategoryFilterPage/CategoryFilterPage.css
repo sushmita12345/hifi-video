@@ -1,0 +1,33 @@
+.video-category-filter-container {
+  display: flex;
+  width: 100vw;
+  height: calc(100vh - 8vh);
+}
+
+.video-chips-container {
+  width: 80%;
+  height: 100%;
+}
+
+.video-chips-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  margin-left: 2.5rem;
+}
+
+.video-chips-content-wrapper {
+  border: 1px solid var(--black-color);
+  border-radius: 2rem;
+  height: 2rem;
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.video-chips-content {
+  font-size: 2rem;
+}
