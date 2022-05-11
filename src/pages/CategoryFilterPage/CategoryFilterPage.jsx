@@ -6,7 +6,7 @@ import { useVideo } from "../../context/VideoContext";
 
 export function CategoryFilterPage() {
 
-    const {getCategoryByName, getFilterCategoryVideo, videoDispatch, videoSearch, videoState: {categoryName}} = useVideo()
+    const {getCategoryByName, getFilterCategoryVideo, videoDispatch, videoSearch} = useVideo()
 
     console.log(getCategoryByName)
     return (
@@ -20,18 +20,6 @@ export function CategoryFilterPage() {
                     <div className="video-chips-content-wrapper video-chips-gap">
                         {getCategoryByName?.map((eachCatVideo, i) => <button className="video-chips-content" onClick={() => videoDispatch({type: "GET_VIDEOS_BY_CATEGORY_NAME", payload: eachCatVideo})} key={i}>{eachCatVideo}</button>)}
                     </div>
-                    {/* <div className="video-chips-content-wrapper">
-                        <span className="video-chips-content">Microsoft</span>
-                    </div>
-                    <div className="video-chips-content-wrapper">
-                        <span className="video-chips-content">Amazon</span>
-                    </div>
-                    <div className="video-chips-content-wrapper">
-                        <span className="video-chips-content">Unacademy</span>
-                    </div>
-                    <div className="video-chips-content-wrapper">
-                        <span className="video-chips-content">Cars24</span>
-                    </div> */}
                 </div>
 
                 <div className="videoCard-main-wrapper">
