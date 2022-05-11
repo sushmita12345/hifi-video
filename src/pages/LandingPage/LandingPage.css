@@ -1,9 +1,5 @@
 @import url("../../assets/reset.css");
 
-body {
-  font-family: "Orelega One", cursive;
-}
-
 .video-main-wrapper {
   height: calc(100vh - 8vh);
   width: 100vw;

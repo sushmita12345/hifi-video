@@ -17,7 +17,14 @@
   margin-left: 2.5rem;
 }
 
-.video-chips-content-wrapper {
+.videoCard-main-wrapper {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* .video-chips-content-wrapper {
   border: 1px solid var(--black-color);
   border-radius: 2rem;
   height: 2rem;
@@ -26,8 +33,18 @@
   justify-content: center;
   align-items: center;
   padding: 1.5rem;
-}
+} */
 
 .video-chips-content {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  width: fit-content;
+  padding: 5px 12px 5px 12px;
+  border-radius: 2rem;
+  border: 1px solid var(--black-color);
+  background-color: transparent;
+}
+
+.video-chips-gap {
+  display: flex;
+  gap: 1.2rem;
 }
