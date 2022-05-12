@@ -11,7 +11,7 @@ export function Navbar() {
                         <input type="text" className="video-searchbar" placeholder="Search"/>
                         <MdiMagnify className="video-magnify-search"/>
                     </div> */}
-                    <button className="video-login-btn">Login</button>
+                    <Link to="/login"><button className="video-login-btn">Login</button></Link>
                 </div>
             </nav>
         </div>
