@@ -7,7 +7,7 @@ import {useAuth} from "../../context/AuthContext";
 export function Login() {
 
     const {loginHandler, token} = useAuth()
-    console.log(token)
+    // console.log(token)
     const [loginForm, setLoginForm] = useState({email: "", password: ""})
 
     function loginAsGuest() {

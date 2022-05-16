@@ -8,7 +8,7 @@ export function CategoryFilterPage() {
 
     const {getCategoryByName, getFilterCategoryVideo, videoDispatch, videoSearch} = useVideo()
 
-    console.log(getCategoryByName)
+    // console.log(getCategoryByName)
     return (
         <div className="video-category-filter-container">
             <Sidebar />

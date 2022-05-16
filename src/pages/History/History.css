@@ -1,0 +1,29 @@
+@import url("../../assets/reset.css");
+
+.video-history-length {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.video-history-length-container {
+  padding: 3rem 0 3rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video-history-clear-container {
+  display: flex;
+}
+
+.video-history-clear-icon {
+  font-size: 2.5rem;
+  margin-right: 5rem;
+  cursor: pointer;
+}
+
+.video-history-clear-content {
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
