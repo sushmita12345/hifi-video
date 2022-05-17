@@ -11,10 +11,14 @@ export function SingleVideoPage() {
     // const navigate = useNavigate()
 
     const {getFilterCategoryVideo} = useVideo();
-    // console.log(getFilterCategoryVideo)
+    console.log(getFilterCategoryVideo)
     const videoId = useParams()
+     console.log(videoId)
 
-    const getVideo = getFilterCategoryVideo?.find((eachVideo) => eachVideo._id === videoId)
+    const getVideo = getFilterCategoryVideo.find(
+        (eachVideo) => eachVideo._id === videoId
+    );
+    console.log(getVideo)
 
     return (
         getFilterCategoryVideo && (
@@ -22,21 +26,16 @@ export function SingleVideoPage() {
                 <div className="video-category-filter-container">
                     <Sidebar />
                     <div>
-                        <div>                           
+                        <div>   
                             <div className="single-video-iframe-container">
                                 <iframe className="single-video-iframe"
                                     src="https://www.youtube.com/embed/kDd33VxaxaY"
-
                                     title="YouTube video player" 
                                     frameBorder="0" 
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                     allowFullScreen
-                                    // frameborder="0"
-                                    // allow="autoplay; encrypted-media"
-                                    // allowfullscreen
-                                    // title="video"
                                 />
-                                <h2 className="iframe-video-title">Google Frontend Interview questions</h2>
+                                <h2 className="iframe-video-title">{getVideo?.title}</h2>
                                 <div className="video-iframe-content-container">
                                     <div className="video-iframe-views-title">
                                         <div className="video-iframe-view-container">

@@ -1,0 +1,9 @@
+.history-video-card-container {
+  display: flex;
+  border: 1px solid black;
+}
+
+.history-thumbnail-img {
+  height: 100%;
+  width: 50%;
+}
