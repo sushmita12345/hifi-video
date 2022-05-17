@@ -1,7 +1,4 @@
 import {Sidebar, HistoryCard} from "../../components/index";
-
-// import { Sidebar } from "../../components/Sidebar/Sidebar";
-// import { HistoryCard } from "../../components/HistoryCard/HistoryCard";
 import { useHistory } from "../../context/HistoryContext";
 import {IcRoundDelete} from "../../assets/Icon/Icon";
 

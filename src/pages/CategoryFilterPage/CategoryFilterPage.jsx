@@ -1,7 +1,5 @@
 import "./CategoryFilterPage.css";
 import {Sidebar, VideoCard} from "../../components/index";
-// import { Sidebar } from "../../components/Sidebar/Sidebar";
-// import { VideoCard } from "../../components/VideoCard/VideoCard";
 import { useVideo } from "../../context/VideoContext";
 
 
