@@ -1,14 +1,11 @@
 import "./CategoryFilterPage.css";
-import { Sidebar } from "../../components/Sidebar/Sidebar";
-import { VideoCard } from "../../components/VideoCard/VideoCard";
+import {Sidebar, VideoCard} from "../../components/index";
 import { useVideo } from "../../context/VideoContext";
 
 
 export function CategoryFilterPage() {
 
     const {getCategoryByName, getFilterCategoryVideo, videoDispatch, videoSearch} = useVideo()
-
-    console.log(getCategoryByName)
     return (
         <div className="video-category-filter-container">
             <Sidebar />

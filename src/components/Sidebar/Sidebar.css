@@ -1,6 +1,6 @@
 .video-sidebar-container {
   width: 20%;
-  height: 100%;
+  height: calc(100vh - 8vh);
   padding: 5rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -14,8 +14,14 @@
 .video-sidebar-icon {
   font-size: 2rem;
   margin-right: 1.5rem;
+  cursor: pointer;
 }
 
 .video-sidebar-content {
   font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.video-sidebar-link {
+  text-decoration: none;
 }

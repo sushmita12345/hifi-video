@@ -1,7 +1,10 @@
 import "./Navbar.css";
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 export function Navbar() {
+    const navigate = useNavigate();
+    const {token, logoutFun} = useAuth();
     return (
         <div>
             <nav className="video-wrapper">
@@ -11,7 +14,7 @@ export function Navbar() {
                         <input type="text" className="video-searchbar" placeholder="Search"/>
                         <MdiMagnify className="video-magnify-search"/>
                     </div> */}
-                    <Link to="/login"><button className="video-login-btn">Login</button></Link>
+                    <button className="video-login-btn" onClick={() => {logoutFun(); navigate("/login")}}>{token ? "Logout" : "Login"}</button>
                 </div>
             </nav>
         </div>

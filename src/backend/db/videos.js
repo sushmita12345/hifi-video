@@ -39,7 +39,7 @@ export const videos = [
     title: "Amazon Star Rating Interview Question in React | Front End",
     videoLink: "https://www.youtube.com/watch?v=AX6ECLcJzps",
     description:
-      "Prepare for the Google Frontend Phone Interview with me!",
+      "In this video, I go over a common front end engineering question in React. I show you how to build a common star rating component with best practices. Angular version coming soon!",
     creator: "Lesson on Coding",
     categoryName: "Amazon",
     img: "https://yt3.ggpht.com/ytc/AKedOLRejOsHSwjAW_mVjBcf33xnu-qQQvJ4WWAZgTYgcw=s176-c-k-c0x00ffffff-no-rj",
