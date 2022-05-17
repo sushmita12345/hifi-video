@@ -1,32 +1,29 @@
-import {MdiThumbUpOutline, MdiPlaylistPlus, IcRoundCircle} from "../../assets/Icon/Icon";
+import {IcRoundCircle, IcRoundClose} from "../../assets/Icon/Icon";
 import { TitleSplice, TimeStampConverter } from "../../Utils/index";
-import "./HistoryCard.css"
-
-// import "./VideoCard.css";
+import "./HistoryCard.css";
+import { useHistory } from "../../context";
 
 
 export function HistoryCard({eachVideo}) {
 
-    const {title, creator, img, thumbnail, view, timeStamp} = eachVideo
-    // console.log(timeStamp)
+    const {_id, title, creator, img, thumbnail, view, timeStamp} = eachVideo
+    const {removeHistory}  = useHistory()
    return (
        <div className="video-card-wrapper">
            <header className="history-video-card-container">
-               <div className="video-img-container">
+               <div className="video-history-img-container">
                    <img src={thumbnail} alt="thumbnail" className="history-thumbnail-img"></img>
                </div>
-               <div>
+               <div className="history-horizontal-content-wrapper">
 
-                    <div className="video-content-container">
-                            <div className="video-avatar-title-wrapper">
-                                <img src={img} alt="avatar" className="video-card-creator-img"/>
-                                <span className="video-card-content">{TitleSplice(title)}</span>
-                            </div>
-                            <div className="video-icons-container">
-                                <MdiThumbUpOutline className="video-like-icon"/>
-                                <MdiPlaylistPlus className="video-play-icon"/>
-                                
-                            </div>
+                    <div className="video-content-history-container">
+                        <div className="video-avatar-title-wrapper">
+                            <img src={img} alt="avatar" className="video-card-creator-img"/>
+                            <span className="video-card-content">{TitleSplice(title)}</span>
+                        </div>
+                        <div className="video-history-icons-container">
+                            <IcRoundClose className="video-history-clear-icon" onClick={() => removeHistory(_id)}/>
+                        </div>
                     </div>
                     <div className="video-creator-views-date-wrapper">
                         <span className="video-creator">{creator}</span>

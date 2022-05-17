@@ -1,9 +1,30 @@
 .history-video-card-container {
+  height: 20vh;
   display: flex;
-  border: 1px solid black;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.video-history-img-container {
+  height: 20vh;
+  width: 15vw;
 }
 
 .history-thumbnail-img {
   height: 100%;
-  width: 50%;
+  width: 100%;
+}
+
+.history-horizontal-content-wrapper {
+  width: 50vw;
+}
+
+.video-history-icons-container {
+  margin-right: 0;
+}
+
+.video-content-history-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem 1rem 2rem;
 }

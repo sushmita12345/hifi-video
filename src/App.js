@@ -1,6 +1,6 @@
 import "./App.css";
 import {Route, Routes} from "react-router-dom";
-import {Navbar} from "../src/components/Navbar/Navbar";
+import {Navbar} from "../src/components/index";
 import { LandingPage, CategoryFilterPage, Login, History, SingleVideoPage } from "./pages/index";
 
 

@@ -1,5 +1,7 @@
-import { Sidebar } from "../../components/Sidebar/Sidebar";
-import { HistoryCard } from "../../components/HistoryCard/HistoryCard";
+import {Sidebar, HistoryCard} from "../../components/index";
+
+// import { Sidebar } from "../../components/Sidebar/Sidebar";
+// import { HistoryCard } from "../../components/HistoryCard/HistoryCard";
 import { useHistory } from "../../context/HistoryContext";
 import {IcRoundDelete} from "../../assets/Icon/Icon";
 
@@ -20,7 +22,7 @@ export function History() {
                     </div>
                     
                 </div>
-                <div className="videoCard-main-wrapper">
+                <div className="videoCard-main-history-wrapper">
                     
                     {historyVideo?.map((eachVideo) => <HistoryCard eachVideo={eachVideo} key={eachVideo.id}/>)}
                     

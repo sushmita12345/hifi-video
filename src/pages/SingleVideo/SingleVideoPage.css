@@ -20,7 +20,7 @@
 }
 
 .video-iframe-title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
@@ -61,4 +61,13 @@
   font-size: 1.5rem;
   margin-top: 2.5rem;
   font-weight: 500;
+}
+
+.video-iframe-content-wrapper {
+  width: 50vw;
+}
+
+.video-description {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
