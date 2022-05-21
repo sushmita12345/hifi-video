@@ -1,7 +1,7 @@
 import "./App.css";
 import {Route, Routes} from "react-router-dom";
 import {Navbar} from "../src/components/index";
-import { LandingPage, CategoryFilterPage, Login, History, SingleVideoPage } from "./pages/index";
+import { LandingPage, CategoryFilterPage, Login, History, SingleVideoPage, LikePage } from "./pages/index";
 
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/video/:videoId" element={<SingleVideoPage />} />
         <Route path="/history" element={<History />} />
+        <Route path="/like" element={<LikePage />} />
 
       </Routes>
 

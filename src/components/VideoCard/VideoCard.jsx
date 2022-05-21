@@ -1,8 +1,7 @@
 import {MdiThumbUpOutline, MdiPlaylistPlus, IcRoundCircle, MdiHistory} from "../../assets/Icon/Icon";
 import { TitleSplice, TimeStampConverter } from "../../Utils/index";
 import "./VideoCard.css";
-import { useHistory } from "../../context/HistoryContext";
-import { useAuth } from "../../context/AuthContext";
+import { useHistory, useAuth, useLike } from "../../context/index";
 import { useNavigate } from "react-router";
 
 
@@ -11,17 +10,20 @@ export function VideoCard({eachVideo}) {
     const {_id, title, creator, img, thumbnail, view, timeStamp} = eachVideo
     const {addHistoryVideo} = useHistory();
     const navigate = useNavigate();
-    const {token} = useAuth()
+    const {token} = useAuth();
+    const {likedVideoSave} = useLike()
 
     const singleVideo = () => {
         navigate(`/video/${_id}`)
         if(token) {
             addHistoryVideo(eachVideo)
-            // console.log(eachVideo)
         }
     }
 
-    // console.log(timeStamp)
+    const likedVideoHandler = () => {
+        token ? likedVideoSave(eachVideo) : navigate("/login")
+        console.log(eachVideo)
+    }
    return (
        <div className="video-card-wrapper">
            <header className="video-card-container">
@@ -34,7 +36,7 @@ export function VideoCard({eachVideo}) {
                         <span className="video-card-content">{TitleSplice(title)}</span>
                     </div>
                     <div className="video-icons-container">
-                        <MdiThumbUpOutline className="video-like-icon"/>
+                        <MdiThumbUpOutline className="video-like-icon" onClick={() => likedVideoHandler()}/>
                         <MdiPlaylistPlus className="video-play-icon"/>
                         {/* <MdiHistory onClick={() => }/> */}
                     </div>
