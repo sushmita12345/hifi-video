@@ -7,6 +7,7 @@ import "./History.css"
 export function History() {
 
     const {historyState: {historyVideo}, removeAllHistory} = useHistory()
+    console.log(historyVideo)
     return (
         <div className="video-category-filter-container">
             <Sidebar />

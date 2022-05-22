@@ -24,7 +24,7 @@ export function Sidebar() {
                 <MdiHistory className="video-sidebar-icon"/>
                 <span className="video-sidebar-content">History</span>
             </div>
-            <div className="video-sidebar-icon-container">
+            <div className="video-sidebar-icon-container" onClick={() => {!token ? navigate("/login") : navigate("/like")}}>
                 <MdiThumbUp className="video-sidebar-icon"/>
                 <span className="video-sidebar-content">Like</span>
             </div>
