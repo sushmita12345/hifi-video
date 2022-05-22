@@ -1,8 +1,9 @@
-import {MdiThumbUpOutline, MdiPlaylistPlus, IcRoundCircle, MdiHistory} from "../../assets/Icon/Icon";
+import {MdiThumbUp, MdiPlaylistPlus, IcRoundCircle} from "../../assets/Icon/Icon";
 import { TitleSplice, TimeStampConverter } from "../../Utils/index";
 import "./VideoCard.css";
 import { useHistory, useAuth, useLike } from "../../context/index";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { useVideo } from "../../context/VideoContext";
 
 
 export function VideoCard({eachVideo}) {
@@ -11,7 +12,9 @@ export function VideoCard({eachVideo}) {
     const {addHistoryVideo} = useHistory();
     const navigate = useNavigate();
     const {token} = useAuth();
-    const {likedVideoSave} = useLike()
+    const {likeState: {likedVideo}, likedVideoSave, likedVideoRemove} = useLike()
+    const {videoId} = useParams();
+    const {videoState: {videos}} = useVideo()
 
     const singleVideo = () => {
         navigate(`/video/${_id}`)
@@ -20,9 +23,27 @@ export function VideoCard({eachVideo}) {
         }
     }
 
+    // const likedVideoHandler = () => {
+    //     token ? likedVideoSave(eachVideo) : navigate("/login")
+    //     console.log(eachVideo)
+    // }
+
+    function findVideo(id) {
+        const currentVideo = videos.find((video) => video._id === id);
+        return currentVideo;
+      }
+    const playingVideo = findVideo(eachVideo._id)
+
     const likedVideoHandler = () => {
-        token ? likedVideoSave(eachVideo) : navigate("/login")
-        console.log(eachVideo)
+        if(token) {
+            if(likedVideo.some((video) => video._id === eachVideo._id)){
+                likedVideoRemove(playingVideo)
+            } else {
+                likedVideoSave(playingVideo)
+            }
+        }else{
+            navigate("/login")
+        }
     }
    return (
        <div className="video-card-wrapper">
@@ -36,7 +57,7 @@ export function VideoCard({eachVideo}) {
                         <span className="video-card-content">{TitleSplice(title)}</span>
                     </div>
                     <div className="video-icons-container">
-                        <MdiThumbUpOutline className="video-like-icon" onClick={() => likedVideoHandler()}/>
+                        <MdiThumbUp onClick={() => likedVideoHandler()} className={likedVideo.some((video) => video._id === eachVideo._id) ? "video-like-icon-color" : "video-like-icon" }/>
                         <MdiPlaylistPlus className="video-play-icon"/>
                         {/* <MdiHistory onClick={() => }/> */}
                     </div>

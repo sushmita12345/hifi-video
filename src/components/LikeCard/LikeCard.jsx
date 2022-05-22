@@ -10,7 +10,7 @@ export function LikeCard({eachVideo}) {
     const {_id, thumbnail, title, img, creator, view, timeStamp} = eachVideo
     const {addHistoryVideo} = useHistory();
     const {likedVideoRemove} = useLike();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const singleVideo = (_id) => {
         navigate(`/video/${_id}`)
@@ -22,7 +22,7 @@ export function LikeCard({eachVideo}) {
                <div className="video-img-container">
                    <img src={thumbnail} alt={title} className="thumbnail-img" onClick={() => singleVideo(_id)}></img>
                </div>
-               <IcRoundClose className="video-like-remove" onClick={() => likedVideoRemove(eachVideo._id)}/>
+               <IcRoundClose onClick={() => likedVideoRemove(eachVideo._id)} className="video-like-remove"/>
                <div className="video-content-container">
                     <div className="video-avatar-title-wrapper">
                         <img src={img} alt="avatar" className="video-card-creator-img"/>

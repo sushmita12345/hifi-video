@@ -33,42 +33,37 @@ const LikeProvider = ({children}) => {
         }
     },[token])
 
-    const likedVideoSave = async (video) => {
-        if(likedVideo.find((eachVideo) => eachVideo._id === video._id)){
-            console.log("Video already liked")
-            return
-        } else {
-            try {
-                const {status, data: {likes}} = await axios.post("/api/user/likes", {video},{
-                    headers: {
-                        authorization: token
-                    }
-                })
-                if(status === 201){
-                    likeDispatch({type: "SAVE_LIKED_VIDEO", payload: likes})
+    const likedVideoRemove = async (video) => {
+        try {
+            const {status, data: {likes}} = await axios.delete(`/api/user/likes/${video._id}`, {
+                headers: {
+                    authorization: token
                 }
-            }catch(error) {
-                console.error(error.response)
+            })
+            if(status === 200) {
+                likeDispatch({type: "REMOVE_LIKED_VIDEO", payload: likes})
             }
+        }catch(error){
+            console.error(error.response)
         }
     }
 
-    const likedVideoRemove = async (videoId) => {
-        if(likedVideo.find((eachVideo) => eachVideo._id === videoId)){
-            try {
-                const {status, data: {likes}} = await axios.delete(`/api/user/likes/${videoId}`, {
-                    headers: {
-                        authorization: token
-                    }
-                })
-                if(status === 200) {
-                    likeDispatch({type: "REMOVE_LIKED_VIDEO", payload: likes})
+    const likedVideoSave = async (video) => {
+        try {
+            const {status, data: {likes}} = await axios.post("/api/user/likes", {video},{
+                headers: {
+                    authorization: token
                 }
-            }catch(error){
-                console.error(error.response)
+            })
+            if(status === 201){
+                likeDispatch({type: "SAVE_LIKED_VIDEO", payload: likes})
             }
+        }catch(error) {
+            console.error(error.response)
         }
     }
+
+   
 
     return (
         <LikeContext.Provider value={{likeState, likeDispatch, likedVideoSave, likedVideoRemove}}>{children}</LikeContext.Provider>

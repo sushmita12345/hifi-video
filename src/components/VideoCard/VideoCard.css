@@ -39,6 +39,12 @@
   margin-right: 1rem;
 }
 
+.video-like-icon-color {
+  color: var(--blue-color);
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
 .video-card-creator-img {
   height: 3rem;
   width: 3rem;

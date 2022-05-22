@@ -4,7 +4,6 @@ import {useLike} from "../../context/LikeContext"
 export function LikePage() {
 
     const {likeState: {likedVideo}} = useLike()
-    // console.log(likedVideo)
     return (
         <div className="video-category-filter-container">
             <Sidebar />
