@@ -22,12 +22,6 @@ export function VideoCard({eachVideo}) {
             addHistoryVideo(eachVideo)
         }
     }
-
-    // const likedVideoHandler = () => {
-    //     token ? likedVideoSave(eachVideo) : navigate("/login")
-    //     console.log(eachVideo)
-    // }
-
     function findVideo(id) {
         const currentVideo = videos.find((video) => video._id === id);
         return currentVideo;
