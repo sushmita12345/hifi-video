@@ -1,9 +1,10 @@
-import {MdiThumbUp, MdiPlaylistPlus, IcRoundCircle} from "../../assets/Icon/Icon";
+import {MdiThumbUp, MdiPlaylistPlus, IcRoundCircle, MdiClock} from "../../assets/Icon/Icon";
 import { TitleSplice, TimeStampConverter } from "../../Utils/index";
 import "./VideoCard.css";
 import { useHistory, useAuth, useLike } from "../../context/index";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
 import { useVideo } from "../../context/VideoContext";
+import { useWatchLater } from "../../context/WatchLater";
 
 
 export function VideoCard({eachVideo}) {
@@ -13,8 +14,8 @@ export function VideoCard({eachVideo}) {
     const navigate = useNavigate();
     const {token} = useAuth();
     const {likeState: {likedVideo}, likedVideoSave, likedVideoRemove} = useLike()
-    const {videoId} = useParams();
-    const {videoState: {videos}} = useVideo()
+    const {videoState: {videos}} = useVideo();
+    const {watchState: {watchlater}, addWatchLater, removeWatchLater} = useWatchLater();
 
     const singleVideo = () => {
         navigate(`/video/${_id}`)
@@ -22,11 +23,6 @@ export function VideoCard({eachVideo}) {
             addHistoryVideo(eachVideo)
         }
     }
-
-    // const likedVideoHandler = () => {
-    //     token ? likedVideoSave(eachVideo) : navigate("/login")
-    //     console.log(eachVideo)
-    // }
 
     function findVideo(id) {
         const currentVideo = videos.find((video) => video._id === id);
@@ -45,6 +41,16 @@ export function VideoCard({eachVideo}) {
             navigate("/login")
         }
     }
+
+    const watchLaterHandler = () => {
+        if(token) {
+            if(watchlater.some((video) => video._id === eachVideo._id)){
+                removeWatchLater(playingVideo)
+            }else {
+                addWatchLater(playingVideo)
+            }
+        }
+    }
    return (
        <div className="video-card-wrapper">
            <header className="video-card-container">
@@ -59,7 +65,7 @@ export function VideoCard({eachVideo}) {
                     <div className="video-icons-container">
                         <MdiThumbUp onClick={() => likedVideoHandler()} className={likedVideo.some((video) => video._id === eachVideo._id) ? "video-like-icon-color" : "video-like-icon" }/>
                         <MdiPlaylistPlus className="video-play-icon"/>
-                        {/* <MdiHistory onClick={() => }/> */}
+                        <MdiClock onClick={() => watchLaterHandler()} className={watchlater.some((video) => video._id === eachVideo._id) ? "video-watch-icon-color" : "video-watch-icon"}/>
                     </div>
                </div>
                <div className="video-creator-views-date-wrapper">

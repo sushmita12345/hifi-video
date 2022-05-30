@@ -34,13 +34,15 @@
 }
 
 .video-like-icon,
-.video-play-icon {
+.video-play-icon,
+.video-watch-icon {
   font-size: 2rem;
   margin-right: 1rem;
   cursor: pointer;
 }
 
-.video-like-icon-color {
+.video-like-icon-color,
+.video-watch-icon-color {
   color: var(--blue-color);
   font-size: 2rem;
   margin-right: 1rem;
