@@ -1,20 +1,65 @@
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 // import { VideoIframe } from "../../components/VideoIframe/VideoIframe";
 import { useVideo } from "../../context/index";
 import { Sidebar } from "../../components/index";
 import {MdiThumbUp, MdiPlaylistPlus, MdiClock, IcOutlineVisibility} from "../../assets/Icon/Icon"
 import "./SingleVideoPage.css"
+import { useLike } from "../../context/LikeContext";
+import { useWatchLater } from "../../context/WatchLater";
+import { useAuth } from "../../context/AuthContext";
 
 export function SingleVideoPage() {
 
     const {getFilterCategoryVideo} = useVideo();
-    const {videoId} = useParams()
+    const {videoId} = useParams();
+    console.log(videoId)
+    const {likeState: {likedVideo}, likedVideoRemove, likedVideoSave} = useLike();
+    const {watchState: {watchlater}, addWatchLater, removeWatchLater} = useWatchLater();
+    const {token} = useAuth();
     
 
     const getVideo = getFilterCategoryVideo.find(
         (eachVideo) => eachVideo._id === videoId
     );
     console.log(getVideo)
+
+    // const likedHandler = () => {
+    //     likedVideoSave(getVideo)
+    // }
+
+    // function findVideo(id) {
+    //     const currentVideo = videos.find((video) => video._id === id);
+    //     return currentVideo;
+    //   }
+    // const playingVideo = findVideo(eachVideo._id)
+
+    const likedVideoHandler = () => {
+        if(token) {
+            if(likedVideo.some((video) => video._id === videoId)){
+                likedVideoRemove(getVideo)
+            } else {
+                likedVideoSave(getVideo)
+            }
+        }
+        // else{
+        //     navigate("/login")
+        // }
+    }
+
+    const watchedHandler = () => {
+        if(token) {
+            if(watchlater.some((video) => video._id === videoId)){
+                removeWatchLater(getVideo)
+            } else {
+                addWatchLater(getVideo)
+            }
+        }
+        // else{
+        //     navigate("/login")
+        // }
+    
+        
+    }
 
     return (
         getFilterCategoryVideo && (
@@ -45,12 +90,15 @@ export function SingleVideoPage() {
                                         </div>
                                         
                                         <div className="video-iframe-button-container">
-                                            <button className="iframe-button-style">
-                                                <MdiThumbUp />
-                                                <span>Like</span>
+                                            
+                                            <button className="iframe-button-style" onClick={() => token ? likedVideoHandler() : Navigate("/login")}>
+                                                <MdiThumbUp className={likedVideo.find((eachVideo) => eachVideo._id === videoId)? "video-like-icon-color" : "video-like-icon"}/>
+                                                <span>{likedVideo.find((eachVideo) => eachVideo._id === videoId)? "Liked" : "Like"}</span>
                                             </button>
-                                            <button className="iframe-button-style">
-                                                <MdiClock />
+                                            
+                                            
+                                            <button className="iframe-button-style" onClick={() => token ? watchedHandler() : Navigate("/login")}>
+                                                <MdiClock className={watchlater.find((eachVideo) => eachVideo._id === videoId)? "video-like-icon-color" : "video-like-icon"}/>
                                                 <span>Watch Later</span>
                                             </button>
                                             <button className="iframe-button-style">
