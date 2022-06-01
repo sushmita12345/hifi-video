@@ -28,7 +28,7 @@ export function Sidebar() {
                 <MdiThumbUp className="video-sidebar-icon"/>
                 <span className="video-sidebar-content">Like</span>
             </div>
-            <div className="video-sidebar-icon-container">
+            <div className="video-sidebar-icon-container" onClick={() => {!token ? navigate("/login") : navigate("/watchlater")}}>
                 <MdiClock className="video-sidebar-icon"/>
                 <span className="video-sidebar-content">Watch Later</span>
             </div>
